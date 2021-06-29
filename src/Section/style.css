@@ -1,0 +1,36 @@
+.section {
+    padding: 20px;
+    margin: 10px 0;
+    background-color: white;
+}
+
+.section__body {
+    margin: 0;
+}
+.section__header {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    padding: 10px;
+    border-bottom: 1px solid rgb(233, 233, 233);
+}
+
+@media(max-width:700px) {
+    .section__header {
+        grid-template-columns: auto;
+        grid-gap: 10px;
+    }
+}
+
+.section__title {
+    font-size: 20px;
+    margin: 0;
+}
+
+.section__tasks {
+    padding: 10px;
+    display: grid;
+}

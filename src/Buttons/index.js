@@ -1,7 +1,7 @@
 import "./style.css";
 import React, { Fragment } from "react";
 
-const Buttons = ({ tasks, hideDone, toggleHideDone }) => (
+const Buttons = ({ tasks, hideDone, toggleHideDone, setAllDone }) => (
     <div className="buttons">
         {tasks.length > 0 && (
             <Fragment>
@@ -9,6 +9,7 @@ const Buttons = ({ tasks, hideDone, toggleHideDone }) => (
                     {hideDone ? "Pokaż" : "Ukryj"} zakończone
                 </button>
                 <button
+                    onClick={setAllDone}
                     className="buttons__button"
                     autofocus
                     disabled={tasks.every(({ done }) => done)}

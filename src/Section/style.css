@@ -5,8 +5,9 @@
 }
 
 .section__body {
-    margin: 0;
+    margin: 10;
 }
+
 .section__header {
     display: grid;
     grid-template-columns: auto auto;

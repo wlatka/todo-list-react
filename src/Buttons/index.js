@@ -19,6 +19,6 @@ const Buttons = ({ tasks, hideDone, toggleHideDone, setAllDone }) => (
             </Fragment>
         )}
     </div>
-)
+);
 
 export default Buttons;

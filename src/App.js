@@ -4,7 +4,7 @@ import Buttons from "./Buttons";
 import Section from "./Section";
 import Header from "./Header";
 import Container from "./Container";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const getInitialTasks = () => {
   const tasksFromLocalStorage = localStorage.getItem("tasks");

@@ -7,7 +7,7 @@ const Main = styled.main`
 `;
 
 const Container = ({ children }) => (
-    <Main className="container">
+    <Main>
         {children}
     </Main>
 );

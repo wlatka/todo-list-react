@@ -1,7 +1,13 @@
-import "./style.css";
+import styled from "styled-components";
+
+const H1 = styled.h1`
+  margin: 20px;
+  padding: 20px;
+  font-size: 30px;
+`;
 
 const Header = ({ title }) => (
-    <h1 className="header">{title}</h1>
+    <H1>{title}</H1>
 );
 
 export default Header;

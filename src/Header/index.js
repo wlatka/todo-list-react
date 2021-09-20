@@ -1,10 +1,4 @@
-import styled from "styled-components";
-
-const H1 = styled.h1`
-  margin: 20px;
-  padding: 20px;
-  font-size: 30px;
-`;
+import { H1 } from "./styled";
 
 const Header = ({ title }) => (
     <H1>{title}</H1>

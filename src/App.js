@@ -5,6 +5,9 @@ import Section from "./Section";
 import Header from "./Header";
 import Container from "./Container";
 import { useEffect, useState } from "react";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./theme";
+
 
 const getInitialTasks = () => {
   const tasksFromLocalStorage = localStorage.getItem("tasks");
@@ -15,7 +18,6 @@ const getInitialTasks = () => {
 };
 
 function App() {
-
 
   const [hideDone, setHideDone] = useState(false);
   const [tasks, setTasks] = useState(getInitialTasks);
@@ -61,9 +63,7 @@ function App() {
   };
 
   return (
-
-
-
+    <ThemeProvider theme={theme}>
     <Container>
       <Header title="Lista Zadań" />
 
@@ -91,6 +91,7 @@ function App() {
         }
       />
     </Container>
+    </ThemeProvider>
   );
 };
 

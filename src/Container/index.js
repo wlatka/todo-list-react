@@ -1,10 +1,4 @@
-import styled from "styled-components";
-
-const Main = styled.main`
-  max-width: 900px;
-  padding: 0px;
-  margin: 0 auto;
-`;
+import { Main } from "./styled";
 
 const Container = ({ children }) => (
     <Main>

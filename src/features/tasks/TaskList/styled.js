@@ -49,5 +49,4 @@ export const Button = styled.button`
             background: hsl(348, 83%, 62%);
         }
     `}
-
 `;

@@ -1,34 +1,28 @@
+import { useSelector } from "react-redux";
 import Form from "./Form";
 import Tasks from "./TaskList";
 import Buttons from "./Buttons";
 import Section from "../../common/Section";
 import Header from "../../common/Header";
 import Container from "../../common/Container";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "./theme";
+import { selectTasks } from "./tasksSlice";
 
 
-const getInitialTasks = () => {
-  const tasksFromLocalStorage = localStorage.getItem("tasks");
 
-  return tasksFromLocalStorage
-    ? JSON.parse(tasksFromLocalStorage)
-    : [];
-};
-
-function App() {
-
+function Tasks() {
   const [hideDone, setHideDone] = useState(false);
-  const [tasks, setTasks] = useState(getInitialTasks);
 
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+  const { tasks } = useSelector(selectTasks);
 
-  const toggleHideDone = () => {
-    setHideDone(hideDone => !hideDone);
-  };
+  const {
+    removeTask,
+    toggleTaskDone,
+    setAllDone,
+    addNewTask,
+  } = useTasks();
 
   const removeTask = (id) => {
     setTasks(tasks => tasks.filter(task => task.id !== id));
@@ -64,35 +58,30 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-    <Container>
-      <Header title="Lista Zadań" />
+      <Container>
+        <Header title="Lista Zadań" />
 
-      <Section
-        title="Dodaj nowe zadanie"
-        body={<Form addNewTask={addNewTask} />}
-      />
+        <Section
+          title="Dodaj nowe zadanie"
+          body={<Form addNewTask={addNewTask} />}
+        />
 
-      <Section
-        title="Lista zadań"
-        body={
-          <Tasks
-            tasks={tasks}
-            hideDone={hideDone}
-            removeTask={removeTask}
-            toggleTaskDone={toggleTaskDone} />
-        }
-        extraHeaderContent={
-          <Buttons
-            tasks={tasks}
-            hideDone={hideDone}
-            toggleHideDone={toggleHideDone}
-            setAllDone={setAllDone}
-          />
-        }
-      />
-    </Container>
+        <Section
+          title="Lista zadań"
+          body={
+            <Tasks
+              removeTask={removeTask}
+              toggleTaskDone={toggleTaskDone} />
+          }
+          extraHeaderContent={
+            <Buttons
+              setAllDone={setAllDone}
+            />
+          }
+        />
+      </Container>
     </ThemeProvider>
   );
 };
 
-export default App;
+export default Tasks;

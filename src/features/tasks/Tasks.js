@@ -5,24 +5,23 @@ import Buttons from "./Buttons";
 import Section from "../../common/Section";
 import Header from "../../common/Header";
 import Container from "../../common/Container";
-import { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { theme } from "./theme";
+import { theme } from "../../theme";
 import { selectTasks } from "./tasksSlice";
 
 
 
-function Tasks() {
-  const [hideDone, setHideDone] = useState(false);
+function Taskss() {
 
   const { tasks } = useSelector(selectTasks);
-
   const {
     removeTask,
     toggleTaskDone,
     setAllDone,
     addNewTask,
   } = useTasks();
+
+
 
   const removeTask = (id) => {
     setTasks(tasks => tasks.filter(task => task.id !== id));
@@ -84,4 +83,4 @@ function Tasks() {
   );
 };
 
-export default Tasks;
+export default Taskss;

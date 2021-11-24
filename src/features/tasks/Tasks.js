@@ -8,52 +8,53 @@ import Container from "../../common/Container";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../theme";
 import { selectTasks } from "./tasksSlice";
+import { useTasks } from "react";
 
 
 
 function Taskss() {
 
-  const { tasks } = useSelector(selectTasks);
-  const {
-    removeTask,
-    toggleTaskDone,
-    setAllDone,
-    addNewTask,
-  } = useTasks();
+  const Tasksa = () => {
+    const { tasks } = useSelector(selectTasks);
+    const { setTasks } = useTasks();
 
 
+    const removeTask = (id) => {
+      setTasks(tasks => tasks.filter(task => task.id !== id));
+    };
 
-  const removeTask = (id) => {
-    setTasks(tasks => tasks.filter(task => task.id !== id));
+    const toggleTaskDone = (id) => {
+      setTasks(tasks => tasks.map(task => {
+        if (task.id === id) {
+          return { ...task, done: !task.done };
+        };
+
+        return task;
+      }));
+    };
+
+    const setAllDone = () => {
+      setTasks(task => task.map(task => ({
+        ...task,
+        done: true,
+      })));
+    };
+
+    const addNewTask = (content) => {
+      setTasks(tasks => [
+        ...tasks,
+        {
+          content,
+          done: false,
+          id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
+        },
+      ]);
+    };
+
+    return Tasksa();
   };
 
-  const toggleTaskDone = (id) => {
-    setTasks(tasks => tasks.map(task => {
-      if (task.id === id) {
-        return { ...task, done: !task.done };
-      };
 
-      return task;
-    }));
-  };
-
-  const setAllDone = () => {
-    setTasks(task => task.map(task => ({
-      ...task,
-      done: true,
-    })));
-  };
-
-  const addNewTask = (content) => {
-    setTasks(tasks => [
-      ...tasks,
-      {
-        content,
-        done: false,
-        id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
-      },
-    ]);
-  };
 
   return (
     <ThemeProvider theme={theme}>

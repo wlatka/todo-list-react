@@ -12,7 +12,7 @@ const tasksSlice = createSlice({
         },
         toggleHideDone: state => {
             state.hideDone = !state.hideDone;
-        }
+        },
     },
 });
 

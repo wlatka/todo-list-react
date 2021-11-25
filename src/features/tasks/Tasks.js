@@ -8,53 +8,11 @@ import Container from "../../common/Container";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../theme";
 import { selectTasks } from "./tasksSlice";
-import { useTasks } from "react";
 
 
+function TasksPage(removeTask, addNewTask, toggleTaskDone, setAllDone) {
 
-function Taskss() {
-
-  const Tasksa = () => {
-    const { tasks } = useSelector(selectTasks);
-    const { setTasks } = useTasks();
-
-
-    const removeTask = (id) => {
-      setTasks(tasks => tasks.filter(task => task.id !== id));
-    };
-
-    const toggleTaskDone = (id) => {
-      setTasks(tasks => tasks.map(task => {
-        if (task.id === id) {
-          return { ...task, done: !task.done };
-        };
-
-        return task;
-      }));
-    };
-
-    const setAllDone = () => {
-      setTasks(task => task.map(task => ({
-        ...task,
-        done: true,
-      })));
-    };
-
-    const addNewTask = (content) => {
-      setTasks(tasks => [
-        ...tasks,
-        {
-          content,
-          done: false,
-          id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
-        },
-      ]);
-    };
-
-    return Tasksa();
-  };
-
-
+  const { tasks } = useSelector(selectTasks);
 
   return (
     <ThemeProvider theme={theme}>
@@ -63,25 +21,18 @@ function Taskss() {
 
         <Section
           title="Dodaj nowe zadanie"
-          body={<Form addNewTask={addNewTask} />}
-        />
+          body={<Form addNewTask={addNewTask} />} />
 
         <Section
           title="Lista zadań"
-          body={
-            <Tasks
-              removeTask={removeTask}
-              toggleTaskDone={toggleTaskDone} />
-          }
-          extraHeaderContent={
-            <Buttons
-              setAllDone={setAllDone}
-            />
-          }
-        />
+          body={<Tasks
+            removeTask={removeTask}
+            toggleTaskDone={toggleTaskDone} />}
+          extraHeaderContent={<Buttons
+            setAllDone={setAllDone} />} />
       </Container>
     </ThemeProvider>
   );
-};
+}
 
-export default Taskss;
+export default TasksPage;

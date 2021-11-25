@@ -1,3 +1,3 @@
-import Taskss from "./features/tasks/Tasks";
+import TasksPage from "./features/tasks/Tasks";
 
-export default () => <Taskss />;
+export default () => <TasksPage />;

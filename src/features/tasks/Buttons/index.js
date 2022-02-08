@@ -5,7 +5,7 @@ import {
     toggleHideDone,
     setAllDone,
 } from "../tasksSlice";
-import { Div, Button } from "../styled";
+import { Div, Button } from "./styled";
 
 const Buttons = () => {
     const { tasks, hideDone } = useSelector(selectTasks);

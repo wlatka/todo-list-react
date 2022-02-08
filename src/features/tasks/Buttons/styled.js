@@ -13,11 +13,11 @@ export const Button = styled.button`
     transition: color 0.3s;
     font-size: 14px;
 
-    &.hover {
+    &:hover {
     color: hsl(180, 100%, 35%);
     }
 
-    &.disabled {
+    &:disabled {
     color: #ccc;
     }
 
